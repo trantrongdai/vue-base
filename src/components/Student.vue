@@ -93,8 +93,11 @@ export default {
     },
 
     updateStudent() {
-      this.currentStudent.commune_id = this.selectedCommuneCode;
-      StudentService.update(this.currentStudent.id, this.currentStudent)
+      var data = {
+        name: this.currentStudent.name,
+        clazzId: this.selectedClazzId
+      };
+      StudentService.update(this.currentStudent.id, data)
         .then(response => {
           console.log(response.data);
           this.message = 'The Student was updated successfully!';
@@ -105,10 +108,10 @@ export default {
     },
 
     deleteStudent() {
-      StudentService.delete(this.currentStudent.id)
+      StudentService.deleteStudent(this.currentStudent.id)
         .then(response => {
           console.log(response.data);
-          this.$router.push({ name: "Students" });
+          this.$router.push({ path: "/read" });
         })
         .catch(e => {
           console.log(e);
