@@ -1,5 +1,5 @@
 <template>
-  <div v-if="currentStudent" class="edit-form">
+  <div v-if="currentStudent != null" class="edit-form">
     <h4>Student</h4>
     <form id="edit-form" @submit.prevent="updateStudent">
       <div class="form-group Student-form">
@@ -54,6 +54,12 @@ export default {
       clazzes: null,
     };
   },
+  mounted() {
+    this.message = '';
+    this.getAllClass();
+    this.getStudent(this.$route.params.id);
+  },
+
   methods: {
     getStudent(id) {
       StudentService.getStudentById(id)
@@ -68,7 +74,7 @@ export default {
         });
     },
 
-    getAllClazzes() {
+    getAllClass() {
       ClazzService.getAll()
         .then(response => {
           let responseData = response.data;
@@ -108,11 +114,6 @@ export default {
           console.log(e);
         });
     }
-  },
-  mounted() {
-    this.message = '';
-    this.getStudent(this.$route.params.id);
-    this.getAllclazzes();
   }
 };
 </script>

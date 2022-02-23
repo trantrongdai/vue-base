@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item, index) in users" :key="index">
+      <tr v-for="(item, index) in students" :key="index">
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.clazz.name}}</td>
@@ -34,7 +34,7 @@ export default {
   name: "add-tutorial",
   data() {
     return {
-      users: []
+      students: []
     };
   },
   mounted() {
@@ -47,9 +47,9 @@ export default {
         .then(response => {
           let responseData = response.data;
           if (responseData !== null && responseData.data != null) {
-            this.users = responseData.data.data;
+            this.students = responseData.data.data;
           }
-          console.log(this.users)
+          console.log(this.students)
         })
         .catch(e => {
           console.error(e);
