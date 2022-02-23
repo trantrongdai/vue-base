@@ -6,7 +6,11 @@ const routes = [
     name: "read api example",
     component: () => import("./components/Read"),
   },
-
+  {
+    path: "/student/:id",
+    name: "student-details",
+    component: () => import("./components/Student")
+  },
   {
     path: "/read",
     alias: "/create",

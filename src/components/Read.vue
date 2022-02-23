@@ -9,6 +9,7 @@
         <th>Name</th>
         <th>Class</th>
         <th>Roll Number</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,9 @@
         <td>{{item.name}}</td>
         <td>{{item.clazz.name}}</td>
          <td>{{item.rollNumber}}</td>
+         <td>
+          <router-link :to="'/student/' + item.id" class="m-3 btn btn-sm btn-info">Edit</router-link>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -24,7 +28,7 @@
 </template>
 
 <script>
-import CRUDService from "../services/CRUDService";
+import StudentService from "../services/StudentService";
 
 export default {
   name: "add-tutorial",
@@ -34,12 +38,12 @@ export default {
     };
   },
   mounted() {
-      this.getAllUsers();
+      this.getAllStudents();
   },
   methods: {
-    getAllUsers() {
+    getAllStudents() {
       let data = {};
-      CRUDService.getUsers(data)
+      StudentService.getStudents(data)
         .then(response => {
           let responseData = response.data;
           if (responseData !== null && responseData.data != null) {
