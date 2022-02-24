@@ -9,7 +9,9 @@
             class="form-control"
             id="name"
             required
+            maxlength="100"
             v-model="student.name"
+            placeholder="Student name"
             name="name"
           />
         </div>
@@ -21,12 +23,12 @@
             <option v-for="clazz in clazzes"  v-bind:value="clazz.id" v-bind:key="clazz.name">{{ clazz.name }}</option> 
           </select>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success" style="margin-top:20px">Submit</button>
       </div>
 
       <div v-else>
         <h4>You submitted successfully!</h4>
-        <button class="btn btn-success" @click="newStudent">Add</button>
+        <button class="btn btn-success" style="margin-top:20px" @click="newStudent">Add</button>
       </div>
     </div>
   </form>
@@ -96,7 +98,7 @@ export default {
 
 <style>
 .submit-form {
-  max-width: 300px;
+  max-width: 500px;
   margin: auto;
 }
 </style>

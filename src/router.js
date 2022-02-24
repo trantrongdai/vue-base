@@ -4,7 +4,7 @@ const routes = [
     path: "/read",
     alias: "/read",
     name: "read api example",
-    component: () => import("./components/Read"),
+    component: () => import("./components/StudentList"),
   },
   {
     path: "/student/:id",

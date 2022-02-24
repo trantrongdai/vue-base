@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <router-link to="/" class="navbar-brand">CRUD EXAMPLE</router-link>
+      <router-link to="/" class="navbar-brand">MAIN</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/read" class="nav-link">READ API</router-link>
+          <router-link to="/read" class="nav-link">STUDENT LIST</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/create" class="nav-link">CREATE API</router-link>
+          <router-link to="/create" class="nav-link">CREATE STUDENT</router-link>
         </li>
       </div>
     </nav>

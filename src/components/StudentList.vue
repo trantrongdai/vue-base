@@ -1,7 +1,7 @@
 <template>
 
 <div class="container">
-  <h2>User List</h2>          
+  <h2>Student List</h2>          
   <table class="table table-striped">
     <thead>
       <tr>
@@ -20,6 +20,13 @@
          <td>{{item.rollNumber}}</td>
          <td>
           <router-link :to="'/student/' + item.id" class="m-3 btn btn-sm btn-info">Edit</router-link>
+          <button border:none
+            @click="deleteStudent(item.id)"
+            id="btn-delete"
+            class="align-middle">
+          >
+          </button>
+        
         </td>
       </tr>
     </tbody>
@@ -31,7 +38,7 @@
 import StudentService from "../services/StudentService";
 
 export default {
-  name: "add-tutorial",
+  name: "add-student",
   data() {
     return {
       students: []
@@ -42,7 +49,7 @@ export default {
   },
   methods: {
     getAllStudents() {
-      let data = {};
+      let data = {sortBy: { rollNumber: 'asc', name: 'asc', id: "asc" }};
       StudentService.getStudents(data)
         .then(response => {
           let responseData = response.data;
@@ -55,6 +62,29 @@ export default {
           console.error(e);
         });
     },
+
+    deleteStudent(id) {
+      if(confirm("Do you really want to delete?")){
+        StudentService.deleteStudent(id)
+          .then(response => {
+            console.log(response.data);
+            this.$router.push({ path: "/read" });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    }
   }
 };
 </script>
+<style scoped>
+#btn-delete {
+    width:30px;
+    height:30px;
+    border: none;
+    background: transparent;
+    background-image: url(https://img.icons8.com/pastel-glyph/30/fa314a/trash.png);
+    background-repeat: no-repeat;
+}
+</style>
